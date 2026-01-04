@@ -1,0 +1,31 @@
+# ----------------COMPOSITION-----------------
+class Engine:
+    def start(self):
+        return "Engine is Started"   
+class Car:
+    def __init__(self,brand):
+        self.brand = brand
+        self.engine = Engine()  # Composition ('Car contain engine')
+    def drive(self):
+        return f"My Car is {self.brand} and it's branded.\nSee my {self.engine.start()} and ready to go"
+
+# ----------------AGGREGATION-----------------    
+class Author:
+    def __init__(self,name):
+        self.name = name
+class Book:
+    def __init__(self,bookname,author):
+        self.bookname = bookname
+        self.author = author    # Aggregation ('author exits independent')
+    def read(self):
+        return f"The '{self.bookname}' book was written by '{self.author.name}'" 
+    
+# ----------------EXECUTION-----------------  
+car = Car("Benz")
+print(f"{car.drive()}")
+
+fire = Author("Abdhul Kalam Sir")
+wings = Book("Wings of Fire",fire)
+print(f"{wings.read()}")
+  
+
